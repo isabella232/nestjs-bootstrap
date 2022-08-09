@@ -1,3 +1,5 @@
+const environment = process.env.NODE_ENV || 'local';
+
 const credentials = {
   dialect: process.env.DB_TYPE,
   host: process.env.DB_HOST,
@@ -7,7 +9,7 @@ const credentials = {
   database: process.env.DB_NAME,
 };
 
-module.exports = {
+const environmentConfig = {
   production: credentials,
   local: {
     dialect: 'postgres',
@@ -18,3 +20,5 @@ module.exports = {
     database: '{{projectName}}-db',
   },
 };
+
+module.exports = environmentConfig[environment];

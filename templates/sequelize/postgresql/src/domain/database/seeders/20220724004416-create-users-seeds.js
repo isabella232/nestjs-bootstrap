@@ -1,5 +1,5 @@
 const sql = `
-    INSERT INTO Users (
+    INSERT INTO "Users" (
         id,
         name,
         created_at,
