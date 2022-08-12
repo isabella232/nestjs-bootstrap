@@ -8,7 +8,7 @@ module.exports = function (plop) {
         type: 'list',
         name: 'action',
         message: 'Project type',
-        choices: ['Backend for frontend', 'MS with MongoDB-Mongoose', 'MS with MySQL-Sequelize'],
+        choices: ['Backend for frontend', 'MS with MongoDB-Mongoose', 'MS with MySQL-Sequelize', 'MS with PostgreSQL-Sequelize'],
       },
       {
         type: 'input',
@@ -78,13 +78,26 @@ module.exports = function (plop) {
       } else if (data.action === 'MS with MySQL-Sequelize') {
         actions = actions.concat(
           {
-            base: 'templates/mysql',
+            base: 'templates/sequelize/mysql',
             destination: 'app',
             force: true,
             globOptions: {
               dot: true,
             },
-            templateFiles: 'templates/mysql/**/*',
+            templateFiles: 'templates/sequelize/mysql/**/*',
+            type: 'addMany',
+          }
+        );
+      } else if (data.action === 'MS with PostgreSQL-Sequelize') {
+        actions = actions.concat(
+          {
+            base: 'templates/sequelize/postgresql',
+            destination: 'app',
+            force: true,
+            globOptions: {
+              dot: true,
+            },
+            templateFiles: 'templates/sequelize/postgresql/**/*',
             type: 'addMany',
           }
         );
